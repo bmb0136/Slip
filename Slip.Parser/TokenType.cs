@@ -5,6 +5,7 @@ public enum TokenType
   Unknown = 0,
   Comment,
   Identifier,
+  Discard,
 
   // Literals
   Int,
