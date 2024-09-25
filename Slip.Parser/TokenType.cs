@@ -16,7 +16,6 @@ public enum TokenType
   // Symbols
   LParen,
   RParen,
-  Comma,
   Equals,
   DoubleColon,
 
