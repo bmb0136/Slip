@@ -20,7 +20,7 @@ public class LexerTests
   [Theory]
   [InlineData("\"hello\"", "hello")]
   [InlineData("\"test\\n123\"", "test\n123")]
-  [InlineData("\"\\n\\r\\t\\0\"", "\n\r\t\0")]
+  [InlineData("\"\\\"\\\\\\n\\r\\t\\0\"", "\"\\\n\r\t\0")]
   public void Lex_String_ReturnsCorrectValue(string code, string value)
   {
     var (tokens, error) = Lexer.Lex(code);
