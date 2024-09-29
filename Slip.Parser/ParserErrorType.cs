@@ -3,5 +3,7 @@ namespace Slip.Parser;
 public enum ParserErrorType
 {
   Unknown = 0,
-  SyntaxError
+  SyntaxError,
+  NoMultiLineStrings,
+  UnknownEscapeSequence
 }
