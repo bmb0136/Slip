@@ -20,4 +20,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Slip.Parser\Slip.Parser.csproj" />
+  </ItemGroup>
+
 </Project>
