@@ -95,6 +95,8 @@ public class LexerTests
   }
 
   [Theory]
+  [InlineData("// hello world\n")]
+  [InlineData("// hello world :)")]
   public void Lex_Comment_ReturnsComment(string code)
   {
     var (tokens, error) = Lexer.Lex(code);
