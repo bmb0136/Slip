@@ -44,4 +44,20 @@ public class LexerTests
     Assert.Single(tokens);
     Assert.Equal(token, tokens[0].Type);
   }
+
+  [Theory]
+  [InlineData("_func")]
+  [InlineData("mAtch")]
+  [InlineData("letttt")]
+  [InlineData("eenum")]
+  [InlineData("hello_world")]
+  [InlineData("h3ll0_W0RLD")]
+  public void Lex_Identifier_ReturnsIdentifier(string code)
+  {
+    var (tokens, error) = Lexer.Lex(code);
+
+    Assert.Null(error);
+    Assert.Single(tokens);
+    Assert.Equal(TokenType.Identifier, tokens[0].Type);
+  }
 }
