@@ -18,6 +18,7 @@ public static partial class Lexer
       "func" => TokenType.Func,
       "let" => TokenType.Let,
       "rec" => TokenType.Rec,
+      "enum" => TokenType.Enum,
       "match" => TokenType.Match,
       _ => TokenType.Identifier
     };

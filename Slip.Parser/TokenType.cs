@@ -24,5 +24,6 @@ public enum TokenType
   Func,
   Let,
   Rec,
+  Enum,
   Match
 }

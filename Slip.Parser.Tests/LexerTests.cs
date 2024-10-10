@@ -33,6 +33,7 @@ public class LexerTests
   [Theory]
   [InlineData("func", TokenType.Func)]
   [InlineData("rec", TokenType.Rec)]
+  [InlineData("enum", TokenType.Enum)]
   [InlineData("let", TokenType.Let)]
   [InlineData("match", TokenType.Match)]
   public void Lex_Keywords_DoesNotReturnIdentifier(string code, TokenType token)
