@@ -93,4 +93,14 @@ public class LexerTests
     Assert.True(double.TryParse(tokens[0].Value, out double parsed));
     Assert.Equal(value, parsed);
   }
+
+  [Theory]
+  public void Lex_Comment_ReturnsComment(string code)
+  {
+    var (tokens, error) = Lexer.Lex(code);
+
+    Assert.Null(error);
+    Assert.Single(tokens);
+    Assert.Equal(TokenType.Comment, tokens[0].Type);
+  }
 }
