@@ -28,3 +28,7 @@ public sealed record FuncCallExpr(QualifierAST Name, IReadOnlyList<ExprAST> Argu
 
 public sealed record MatchExpr(ExprAST Value, IReadOnlyList<MatchArmAST> Arms, Position Start, Position End) : ExprAST(Start, End);
 public sealed record MatchArmAST(ExprAST Condition, ExprAST Value, Position Start, Position End) : AST(Start, End);
+
+public sealed record LambdaExpr(IReadOnlyList<string> Arguments, ExprAST Body, Position Start) : ExprAST(Start, Body.End);
+
+public sealed record GroupExpr(ExprAST Inner, Position Start, Position End) : ExprAST(Start, End); 
