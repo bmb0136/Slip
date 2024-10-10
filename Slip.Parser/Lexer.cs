@@ -31,7 +31,7 @@ public static partial class Lexer
         [':', ':', ..] => (2, new Token(TokenType.DoubleColon, "::", pos, pos + 2), default),
         ['/', '/', ..] => LexComment(code),
         ['"', ..] => LexString(code, pos),
-        [>= '0' and <= '9' or '.' or '-', ..] => LexNumber(code),
+        [>= '0' and <= '9' or '.' or '-', ..] => LexNumber(code, pos),
         [>= 'a' and <= 'z' or >= 'A' and <= 'Z' or '_', ..] => LexIdentifier(code, pos),
         _ => (0, default(Token), new ParserError(ParserErrorType.SyntaxError, pos, pos + 1))
       };

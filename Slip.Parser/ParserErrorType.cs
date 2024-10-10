@@ -5,5 +5,8 @@ public enum ParserErrorType
   Unknown = 0,
   SyntaxError,
   NoMultiLineStrings,
-  UnknownEscapeSequence
+  UnknownEscapeSequence,
+  MultipleMinusSingsInNumber,
+  MultipleDecimalPointsInNumber,
+  ExpectedNumber
 }
