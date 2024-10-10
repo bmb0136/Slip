@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace Slip.Parser;
 
 public static partial class Lexer
@@ -35,7 +33,7 @@ public static partial class Lexer
         ['/', '/', ..] => LexComment(code),
         ['"', ..] => LexString(code, pos),
         [>= '0' and <= '9' or '.' or '-', ..] => LexNumber(code),
-        [>= 'a' and <= 'z' or >= 'A' and <= 'Z' or '_', ..] => LexIdentifier(code),
+        [>= 'a' and <= 'z' or >= 'A' and <= 'Z' or '_', ..] => LexIdentifier(code, pos),
         _ => (0, default(Token), new ParserError(ParserErrorType.SyntaxError, pos, pos + 1))
       };
 
