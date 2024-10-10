@@ -15,6 +15,7 @@ public static partial class Lexer
 
     TokenType type = value switch
     {
+      "_" => TokenType.Discard,
       "func" => TokenType.Func,
       "let" => TokenType.Let,
       "rec" => TokenType.Rec,

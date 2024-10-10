@@ -36,6 +36,7 @@ public class LexerTests
   [InlineData("enum", TokenType.Enum)]
   [InlineData("let", TokenType.Let)]
   [InlineData("match", TokenType.Match)]
+  [InlineData("_", TokenType.Discard)]
   public void Lex_Keywords_DoesNotReturnIdentifier(string code, TokenType token)
   {
     var (tokens, error) = Lexer.Lex(code);

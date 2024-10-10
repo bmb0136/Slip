@@ -25,7 +25,6 @@ public static partial class Lexer
 
       (int read, Token token, ParserError? error) = lookahead switch
       {
-        ['_', ..] => (1, new Token(TokenType.Discard, "_", pos, pos + 1), default),
         ['(', ..] => (1, new Token(TokenType.LParen, "(", pos, pos + 1), default),
         [')', ..] => (1, new Token(TokenType.RParen, ")", pos, pos + 1), default),
         ['=', ..] => (1, new Token(TokenType.Equals, "=", pos, pos + 1), default),
