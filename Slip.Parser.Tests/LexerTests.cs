@@ -30,4 +30,17 @@ public class LexerTests
     Assert.Equal(value, tokens[0].Value);
   }
 
+  [Theory]
+  [InlineData("func", TokenType.Func)]
+  [InlineData("rec", TokenType.Func)]
+  [InlineData("let", TokenType.Func)]
+  [InlineData("match", TokenType.Func)]
+  public void Lex_Keywords_DoesNotReturnIdentifier(string code, TokenType token)
+  {
+    var (tokens, error) = Lexer.Lex(code);
+
+    Assert.Null(error);
+    Assert.Single(tokens);
+    Assert.Equal(token, tokens[0].Type);
+  }
 }
