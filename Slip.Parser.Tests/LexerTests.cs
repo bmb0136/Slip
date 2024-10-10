@@ -32,9 +32,9 @@ public class LexerTests
 
   [Theory]
   [InlineData("func", TokenType.Func)]
-  [InlineData("rec", TokenType.Func)]
-  [InlineData("let", TokenType.Func)]
-  [InlineData("match", TokenType.Func)]
+  [InlineData("rec", TokenType.Rec)]
+  [InlineData("let", TokenType.Let)]
+  [InlineData("match", TokenType.Match)]
   public void Lex_Keywords_DoesNotReturnIdentifier(string code, TokenType token)
   {
     var (tokens, error) = Lexer.Lex(code);
