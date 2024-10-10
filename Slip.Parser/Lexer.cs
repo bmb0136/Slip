@@ -18,6 +18,7 @@ public static partial class Lexer
       {
         pos = pos with { Column = 1 } + 1L;
         code = code[1..];
+        continue;
       }
 
       lookahead.Clear();
@@ -29,7 +30,7 @@ public static partial class Lexer
         [')', ..] => (1, new Token(TokenType.RParen, ")", pos, pos + 1), default),
         ['=', ..] => (1, new Token(TokenType.Equals, "=", pos, pos + 1), default),
         [':', ':', ..] => (2, new Token(TokenType.DoubleColon, "::", pos, pos + 2), default),
-        ['/', '/', ..] => LexComment(code),
+        ['/', '/', ..] => LexComment(code, pos),
         ['"', ..] => LexString(code, pos),
         [>= '0' and <= '9' or '.' or '-', ..] => LexNumber(code, pos),
         [>= 'a' and <= 'z' or >= 'A' and <= 'Z' or '_', ..] => LexIdentifier(code, pos),
