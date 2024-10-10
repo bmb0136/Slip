@@ -65,7 +65,7 @@ public class LexerTests
   [Theory]
   [InlineData("123", 123)]
   [InlineData("0123", 123)]
-  [InlineData("289742", 289742)]
+  [InlineData("-289742", -289742)]
   [InlineData("123456789", 123456789)]
   public void Lex_Int_ReturnsInteger(string code, int value)
   {
@@ -75,6 +75,22 @@ public class LexerTests
     Assert.Single(tokens);
     Assert.Equal(TokenType.Int, tokens[0].Type);
     Assert.True(int.TryParse(tokens[0].Value, out int parsed));
+    Assert.Equal(value, parsed);
+  }
+
+  [Theory]
+  [InlineData("1.23", 1.23)]
+  [InlineData("0.123", 0.123)]
+  [InlineData("-.289742", -.289742)]
+  [InlineData("12345.6789", 12345.6789)]
+  public void Lex_Float_ReturnsFloat(string code, double value)
+  {
+    var (tokens, error) = Lexer.Lex(code);
+
+    Assert.Null(error);
+    Assert.Single(tokens);
+    Assert.Equal(TokenType.Float, tokens[0].Type);
+    Assert.True(double.TryParse(tokens[0].Value, out double parsed));
     Assert.Equal(value, parsed);
   }
 }
