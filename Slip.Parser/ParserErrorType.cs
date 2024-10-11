@@ -8,5 +8,8 @@ public enum ParserErrorType
   UnknownEscapeSequence,
   MultipleMinusSingsInNumber,
   MultipleDecimalPointsInNumber,
-  ExpectedNumber
+  ExpectedNumber,
+  MismatchedDelimeter,
+  ExpectedIdentifier,
+  ExpectedEquals
 }
