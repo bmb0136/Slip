@@ -3,7 +3,9 @@ namespace Slip.Parser.Tests;
 public sealed class FuncCallParserTests
 {
   [Theory]
-  public void ParseExpr_FuncCall_ReturnsFuncCall(string code)
+  [InlineData("print(69)", new[] { "print" })]
+  [InlineData("math::sqrt(69)", new[] { "math", "sqrt" })]
+  public void ParseExpr_FuncCall_ReturnsFuncCall(string code, string[] parts)
   {
     var (tokens, error) = Lexer.Lex(code);
     Assert.Null(error);
@@ -12,5 +14,6 @@ public sealed class FuncCallParserTests
 
     Assert.Null(error);
     Assert.IsType<FuncCallExpr>(expr);
+    Assert.Equal(parts, (expr as FuncCallExpr)!.Name.Parts);
   }
 }
