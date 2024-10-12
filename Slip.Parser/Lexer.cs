@@ -9,7 +9,7 @@ public static partial class Lexer
     Position pos = new(1, 1);
     while (code.Length > 0)
     {
-      if (code[0] == '\r')
+      if (code[0] is ' ' or '\r')
       {
         code = code[1..];
         continue;
@@ -45,6 +45,7 @@ public static partial class Lexer
 
       tokens.Add(token);
       code = code[read..];
+      pos += read;
     }
 
     return (tokens, null);
