@@ -19,6 +19,7 @@ public enum TokenType
   RParen,
   Equals,
   DoubleColon,
+  Comma,
 
   // Keywords
   Func,

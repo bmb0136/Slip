@@ -29,6 +29,7 @@ public static partial class Lexer
         ['(', ..] => (1, new Token(TokenType.LParen, "(", pos, pos + 1), default),
         [')', ..] => (1, new Token(TokenType.RParen, ")", pos, pos + 1), default),
         ['=', ..] => (1, new Token(TokenType.Equals, "=", pos, pos + 1), default),
+        [',', ..] => (1, new Token(TokenType.Comma, ",", pos, pos + 1), default),
         [':', ':', ..] => (2, new Token(TokenType.DoubleColon, "::", pos, pos + 2), default),
         ['/', '/', ..] => LexComment(code, pos),
         ['"', ..] => LexString(code, pos),
