@@ -71,7 +71,35 @@ public static class Parser
 
   private static (int, ExprAST, ParserError?) ParseVariableOrFuncCall(IReadOnlyList<Token> tokens, int start = 0)
   {
-    throw new NotImplementedException();
+    int n = 0;
+    while (start + n < tokens.Count)
+    {
+      Token t = tokens[start + n];
+      if (n % 2 == 0 && t.Type != TokenType.Identifier)
+      {
+        return (-1, null!, new(ParserErrorType.ExpectedIdentifier, t.Start, t.End));
+      }
+      
+      if (n % 2 == 1 && t.Type != TokenType.DoubleColon)
+      {
+        break;
+      }
+
+      n++;
+    }
+
+    string[] parts = Enumerable.Range(0, n)
+      .Where(i => i % 2 == 0)
+      .Select(i => tokens[i].Value)
+      .ToArray();
+    QualifierAST qualifier = new(parts, tokens[start].Start, tokens[start + n - 1].End);
+
+    if (start + n >= tokens.Count || tokens[start + n].Type != TokenType.LParen)
+    {
+      return (n, new VariableExpr(qualifier), null);
+    }
+
+    throw new NotImplementedException("TODO: Parse func call");
   }
 
   private static (int, MatchExpr, ParserError?) ParseMatch(IReadOnlyList<Token> tokens, int start = 0)
